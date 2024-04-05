@@ -38,6 +38,6 @@ public class JobValidationTests {
         Set<ConstraintViolation<Job>> violations = validator.validate(job);
         assertThat(violations).hasSize(1);
         assertThat(violations.iterator().next().getMessage())
-                .isEqualTo("The jobid format must be valid");
+                .isEqualTo("The job ID format must be valid.");
     }
 }
