@@ -30,3 +30,5 @@ public class JobControllerMvcTests {
                 .andExpect(status().isNotFound());
     }
 }
+
+// test for workflow / Github actions
