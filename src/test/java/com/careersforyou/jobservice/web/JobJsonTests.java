@@ -52,4 +52,3 @@ public class JobJsonTests {
                         "thinking", "typing"));
     }
 }
-// test for workflow / Github actions
