@@ -31,4 +31,3 @@ public class JobControllerMvcTests {
     }
 }
 
-// test for workflow / Github actions
