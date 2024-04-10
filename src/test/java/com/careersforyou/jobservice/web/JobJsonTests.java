@@ -21,17 +21,17 @@ public class JobJsonTests {
         var job = new Job("1234567890", "Coder", "Code stuff", "CodeRUs",
                 "thinking", "typing");
         var jsonContent = json.write(job);
-        assertThat(jsonContent).extractingJsonPathStringValue("@.jobid").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.jobid")
                 .isEqualTo("1234567890");
-        assertThat(jsonContent).extractingJsonPathStringValue("@.title").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.title")
                 .isEqualTo(job.title());
-        assertThat(jsonContent).extractingJsonPathStringValue("@.description").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.description")
                 .isEqualTo(job.description());
-        assertThat(jsonContent).extractingJsonPathStringValue("@.companyname").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.companyname")
                 .isEqualTo(job.companyname());
-        assertThat(jsonContent).extractingJsonPathStringValue("@.skill1").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.skill1")
                 .isEqualTo(job.skill1());
-        assertThat(jsonContent).extractingJsonPathStringValue("@.skill2").asString()
+        assertThat(jsonContent).extractingJsonPathStringValue("@.skill2")
                 .isEqualTo(job.skill2());
     }
 
@@ -47,10 +47,8 @@ public class JobJsonTests {
                     "skill2": "typing"
                 }
                 """;
-        ObjectContent<Job> objectContent = json.parse(content);
-        Job expectedJob = objectContent.getObject();
 
-        assertThat(expectedJob)
+        assertThat(json.parse(content))
                 .usingRecursiveComparison()
                 .isEqualTo(new Job("1234567890", "Coder", "Code stuff", "CodeRUS",
                         "thinking", "typing"));
