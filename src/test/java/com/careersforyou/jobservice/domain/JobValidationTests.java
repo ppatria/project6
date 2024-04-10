@@ -42,4 +42,3 @@ public class JobValidationTests {
     }
 }
 
-// test for workflow / Github actions
