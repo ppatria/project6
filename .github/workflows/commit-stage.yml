@@ -33,3 +33,4 @@ jobs:
           if: success() || failure()
           with:
             sarif_file: ${{ steps.scan.outputs.sarif }}
+            actions: read
