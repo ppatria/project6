@@ -1,4 +1,3 @@
-/*
 package com.careersforyou.jobservice.web;
 
 
@@ -56,4 +55,3 @@ public class JobJsonTests {
                         "thinking", "typing"));
     }
 }
-*/
