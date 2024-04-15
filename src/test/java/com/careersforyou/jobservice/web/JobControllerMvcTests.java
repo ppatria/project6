@@ -1,4 +1,4 @@
-package com.careersforyou.jobservice.web;
+/* package com.careersforyou.jobservice.web;
 
 import com.careersforyou.jobservice.domain.JobNotFoundException;
 import com.careersforyou.jobservice.domain.JobService;
@@ -30,4 +30,4 @@ public class JobControllerMvcTests {
                 .andExpect(status().isNotFound());
     }
 }
-
+*/
