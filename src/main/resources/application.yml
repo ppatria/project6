@@ -6,3 +6,36 @@ server:
     threads:
       max: 50
       min-spare: 5
+
+spring:
+  application:
+    name: project6
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-connect-timeout: 5000 # 5s
+      request-read-timeout: 5000 # 5s
+      fail-fast: false # In production, set to true
+      retry:
+        max-attempts: 6
+        initial-interval: 1000 # 1s
+        max-interval: 2000 # 2s
+        multiplier: 1.1
+  datasource:
+    username: user
+    password: password
+    url: jdbc:postgresql://localhost:32768/careersforyoudb_database
+    hikari:
+      connection-timeout: 2000
+      maximum-pool=size: 5
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
+careersforyou:
+  greeting: Welcome to the CareersForYou catalog!

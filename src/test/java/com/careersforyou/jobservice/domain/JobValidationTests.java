@@ -24,8 +24,8 @@ public class JobValidationTests {
     @Test
     void whenAllFieldsCorrectThenValidationSucceeds() {
         var job =
-                new Job("1234567890", "title", "description",
-                        "companyname", "skill1", "skill2");
+                Job.of("1234567890", "Title", "Description",
+                        "Companyname", "Skill1", "Skill2");
         Set<ConstraintViolation<Job>> violations = validator.validate(job);
         assertThat(violations).isEmpty();
     }
@@ -33,8 +33,8 @@ public class JobValidationTests {
     @Test
     void whenjobidDefinedButIncorrectThenValidationFails() {
         var job =
-                new Job("abc4567890", "title", "description",
-                        "companyname", "skill1", "skill2");
+                Job.of("abc4567890", "Title", "Description",
+                        "Companyname", "Skill1", "Skill2");
         Set<ConstraintViolation<Job>> violations = validator.validate(job);
         assertThat(violations).hasSize(1);
         assertThat(violations.iterator().next().getMessage())

@@ -22,22 +22,22 @@ public class JobServiceTests {
 
     @Test
     void whenJobToCreateAlreadyExistsThenThrows() {
-        var jobid = "1234561232";
-        var jobToCreate = new Job(jobid, "title", "description",
-                "companyname", "skill1" , "skill2");
-        when(jobRepository.existsByJobid(jobid)).thenReturn(true);
+        var jobidNum = "1234561232";
+        var jobToCreate = Job.of(jobidNum, "Title", "Description",
+                "Companyname", "Skill1", "Skill2");
+        when(jobRepository.existsByJobid(jobidNum)).thenReturn(true);
         assertThatThrownBy(() -> jobService.addJobToDatabase(jobToCreate))
                 .isInstanceOf(JobAlreadyExistsException.class)
-                .hasMessage("The job with Jobid " + jobid + " already exists.");
+                .hasMessage("The job with Jobid " + jobidNum + " already exists.");
     }
 
     @Test
     void whenJobToReadDoesNotExistThenThrows() {
-        var jobid = "1234561232";
-        when(jobRepository.findByJobid(jobid)).thenReturn(Optional.empty());
-        assertThatThrownBy(() -> jobService.viewJobDetails(jobid))
+        var jobidNum = "1234561232";
+        when(jobRepository.findByJobid(jobidNum)).thenReturn(Optional.empty());
+        assertThatThrownBy(() -> jobService.viewJobDetails(jobidNum))
                 .isInstanceOf(JobNotFoundException.class)
-                .hasMessage("The job with Jobid " + jobid + " was not found.");
+                .hasMessage("The job with Jobid " + jobidNum + " was not found.");
     }
 }
 

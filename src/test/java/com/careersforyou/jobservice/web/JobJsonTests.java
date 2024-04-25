@@ -19,7 +19,7 @@ public class JobJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        var job = new Job("1234567890", "Coder", "Code stuff", "CodeRUs",
+        var job = Job.of("1234567890", "Coder", "Code stuff", "CodeRUs",
                 "thinking", "typing");
         var jsonContent = json.write(job);
         assertThat(jsonContent).extractingJsonPathStringValue("@.jobid")
@@ -51,7 +51,7 @@ public class JobJsonTests {
 
         assertThat(json.parse(content))
                 .usingRecursiveComparison()
-                .isEqualTo(new Job("1234567890", "Coder", "Code stuff", "CodeRUS",
+                .isEqualTo(Job.of("1234567890", "Coder", "Code stuff", "CodeRUS",
                         "thinking", "typing"));
     }
 }

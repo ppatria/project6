@@ -28,12 +28,14 @@ public class JobService {
         return jobRepository.findByJobid(jobid)
                 .map(existingJob -> {
                     var jobToUpdate = new Job(
+                            existingJob.id(),
                             existingJob.jobid(),
                             job.title(),
                             job.description(),
                             job.companyname(),
                             job.skill1(),
-                            job.skill2());
+                            job.skill2(),
+                            existingJob.version());
                     return jobRepository.save(jobToUpdate);
                 })
                 .orElseGet(() -> addJobToDatabase(job));

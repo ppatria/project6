@@ -3,12 +3,16 @@ package com.careersforyou.jobservice.domain;
 import jakarta.validation.constraints.NotBlank;
 // import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 
-public record Job (
+public record Job(
 
         // These validation constraints ensure when HTTP requests are made, they require to specify valid fields
 
         // NotBlank means there has to be something filled out for that field
+        @Id
+        Long id,
         @NotBlank(message = "The job ID must be defined.")
         // This first pattern restricts jobid to only numbers and it has to be exactly 10 digits long
         @Pattern(
@@ -51,5 +55,16 @@ public record Job (
                 regexp = "^[a-zA-Z0-9 ]+$",
                 message = "The company name must contain only letters and numbers."
         )
-        String skill2
-){}
+        String skill2,
+
+        @Version
+        int version
+
+
+){
+        public static Job of(
+                String jobid, String title, String description, String companyname, String skill1, String skill2
+        ){
+                return new Job(null, jobid, title, description, companyname, skill1, skill2, 0);
+        }
+}
