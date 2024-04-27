@@ -13,11 +13,9 @@ public record Job(
         // NotBlank means there has to be something filled out for that field
         @Id
         Long id,
-        @NotBlank(message = "The job ID must be defined.")
+        @NotBlank(message = "The jobid must be defined.")
         // This first pattern restricts jobid to only numbers and it has to be exactly 10 digits long
-        @Pattern(
-                regexp = "^([0-9]{10})$",
-                message = "The job ID format must be valid."
+                @Pattern(regexp = "^([0-9]{10})$", message = "The jobid format must be valid."
         )
         String jobid,
         @NotBlank(message = "The job title must be defined."

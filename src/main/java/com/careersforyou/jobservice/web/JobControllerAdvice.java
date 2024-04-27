@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class JobControllerAdvice {
     @ExceptionHandler(JobNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String bookNotFoundHandler(JobNotFoundException ex) {
+    String jobNotFoundHandler(JobNotFoundException ex) {
         return ex.getMessage();
     }
     @ExceptionHandler(JobAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    String bookAlreadyExistsHandler(JobAlreadyExistsException ex) {
+    String jobAlreadyExistsHandler(JobAlreadyExistsException ex) {
         return ex.getMessage();
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
